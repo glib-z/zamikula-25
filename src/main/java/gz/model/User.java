@@ -1,9 +1,7 @@
 package gz.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+//import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -12,18 +10,19 @@ public class User {
 
     @Id
     @Column(name = "_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "name", nullable = false, length = 20)
     private String name;
 
-    @Column(name = "d_birth", nullable = false, length = 10)
-    private Timestamp date_birth;
+    @Column(name = "d_birth", nullable = false, length = 30)
+    private Timestamp birth;
 
-    public User(int id, String name, Timestamp date_birth) {
+    public User(int id, String name, Timestamp birth) {
         this.id = id;
         this.name = name;
-        this.date_birth = date_birth;
+        this.birth = birth;
     }
 
     public User() {
@@ -37,8 +36,8 @@ public class User {
         return name;
     }
 
-    public Timestamp getDate_birth() {
-        return date_birth;
+    public Timestamp getBirth() {
+        return birth;
     }
 
     public void setId(int id) {
@@ -49,8 +48,8 @@ public class User {
         this.name = name;
     }
 
-    public void setDate_birth(Timestamp date_birth) {
-        this.date_birth = date_birth;
+    public void setBirth(Timestamp birth) {
+        this.birth = birth;
     }
 
     @Override
@@ -58,7 +57,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", date_birth='" + date_birth + '\'' +
+                ", birth='" + birth + '\'' +
                 '}';
     }
 

@@ -4,7 +4,7 @@
 
 <web-app>
 
-    <display-name>ZMServer v.0.1</display-name>
+    <display-name>ZMServer v.0.5</display-name>
 
     <servlet>
         <servlet-name>jersey-serlvet</servlet-name>
@@ -20,7 +20,7 @@
 
     <servlet-mapping>
         <servlet-name>jersey-serlvet</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
 
 </web-app>

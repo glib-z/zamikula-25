@@ -1,0 +1,30 @@
+   body {
+    background-color: #fff5c3;
+    font: 11pt Arial, Helvetica, sans-serif; /* Рубленый шрифт текста */
+    margin: 0; /* Отступы на странице */
+   }
+
+   h1 {
+    font-size: 18px; /* Размер шрифта */
+    margin: 0; /* Убираем отступы */
+    color: #fc6; /* Цвет текста */
+   }
+
+   #header { /* Верхний блок */
+    background: #ff9d39; /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+   }
+
+   #api_list { /* Правая колонка */
+    margin: 10px 5px 20px 5px; /* Значения отступов */
+    padding: 5px; /* Поля вокруг текста */
+    border: 1px solid #333; /* Параметры рамки */
+   }
+
+   #footer { /* Нижний блок */
+    font-size: 12px; /* Размер шрифта */
+    background: #333; /* Цвет фона */
+    padding: 5px; /* Поля вокруг текста */
+    color: #fff; /* Цвет текста */
+    clear: left; /* Отменяем действие float */
+   }

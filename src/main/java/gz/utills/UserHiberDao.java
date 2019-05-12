@@ -9,14 +9,15 @@ import org.hibernate.query.Query;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Timestamp;
 import java.util.List;
 
-public class UserDao {
+public class UserHiberDao {
 
     private SessionFactory sessionFactory;
 
 
-    public UserDao() {
+    public UserHiberDao() {
         java.util.Properties properties = new java.util.Properties();
         try {
             ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -49,6 +50,7 @@ public class UserDao {
             Transaction transaction = session.beginTransaction();
             session.save(user);
             transaction.commit();
+//            session.close();    // <<<--- GZ
         }
     }
 
@@ -65,6 +67,7 @@ public class UserDao {
             Transaction transaction = session.beginTransaction();
             session.delete(user);
             transaction.commit();
+//            session.close();    // <<<--- GZ
         }
     }
 
@@ -92,6 +95,15 @@ public class UserDao {
             Transaction transaction = session.beginTransaction();
             session.update(user);
             transaction.commit();
+        }
+    }
+
+    public List<User> getByAge(Timestamp timestampFrom, Timestamp timestampTo) {
+        try (Session session = sessionFactory.openSession()) {
+            return session
+                    .createQuery("FROM User WHERE d_birth > :t1 AND d_birth < :t2", User.class)
+                    .setParameter("t1", timestampFrom).setParameter("t2", timestampTo)
+                    .list();
         }
     }
 
