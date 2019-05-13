@@ -28,12 +28,14 @@ public class UserApi {
 
     // ********** add_user **********
     @POST
-    @Path("add_user/{name}/{date}/{time}")
+    @Path("add_user")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addUser(@PathParam("name") String name, @PathParam("date") String sDate,
-                            @PathParam("time") String sTime) {
-        return _addUser(name, _stringToTimestamp(sDate, sTime));
+    public Response addUser(String inputJson) {
+        User inputMessage = gson.fromJson(inputJson, User.class);
+        return _addUser(inputMessage.getName(), inputMessage.getBirth());
     }
+
 
     @POST
     @Path("add_user")
