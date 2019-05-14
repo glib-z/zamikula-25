@@ -266,6 +266,14 @@ public class UserApi {
 
     // ********** get_all_users_by_date_birth **********
     @POST
+    @Path("get_all_users_by_date_birth/{birth_from}/{birth_to}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllUsersByDateBirth(@PathParam("birth_from") Long sTimeFrom,
+                                           @PathParam("birth_to") Long sTimeTo) {
+        return _getAllUserByDateBirth(new Timestamp(sTimeFrom), new Timestamp(sTimeTo));
+    }
+
+    @POST
     @Path("get_all_users_by_date_birth")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
@@ -293,33 +301,5 @@ public class UserApi {
 
 
     //===== ^ CHECKED ^ =====
-
-
-/*    @GET
-    @Path("get_all_users_by_age")
-    public Response getAllUsersByAge(String inputMessage) {
-        try {
-            //System.out.println("<ZMServer> /get_user_by_id" + inputMessage);
-            String resultJson = gson.toJson(inputMessage);
-            return Response.status(Response.Status.OK).entity(resultJson).build();
-        } catch (Exception e) {
-            String resultJson = gson.toJson(new Message("<ZMServer> get_user_by_name Exception: " + e));
-            return Response.status(Response.Status.OK).entity(resultJson).build();
-        }
-    }
- */
-
-
-/*    @POST
-    @Path("get_all_users_by_age")
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllUsersByAgeHtml(@FormParam("from") int minAge, @FormParam("to") int maxAge) {
-
-
-        return _getAllUserByDateBirth(_stringToTimestamp(sDate,sTime), _stringToTimestamp(sDate1,sTime1));
-    }
-*/
-
 
 }
